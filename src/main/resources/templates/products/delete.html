@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Usuwanie produktu</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/products/show.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-$END$
+<div class="panel-group" style="margin-top:40px">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <span th:utext="${product.product_name}"></span>
+        </div>
+        <div class="panel-body">
+            <label>Marka:</label>
+            <p th:utext="${product.brand}"></p>
+            <label>Model:</label>
+            <p th:utext="${product.model}"></p>
+            <label>Imie właściciela:</label>
+            <p th:utext="${product.name}"></p>
+            <label>Nazwisko właściciela:</label>
+            <p th:utext="${product.lastName}"></p>
+            <label>Notatka:</label>
+            <p th:utext="${product.note}"></p>
+        </div>
+    </div>
+</div>
+
+<form th:action="@{/products/delete/accept/} + ${product.id}" method="get">
+    <button class="btn btn-md btn-danger btn-block" name="delete"
+            type="Submit">Usuń</button>
+    <button class="btn btn-md btn-primary btn-block" th:href="@{/products}"> Powrót </button>
+</form>
+
+
 </body>
 </html>

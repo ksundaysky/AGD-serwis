@@ -71,6 +71,29 @@ public class ProductController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/products/delete/{productId}")
+    public ModelAndView delete(@PathVariable int productId){
+        Product product = productService.findById(productId);
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("product", product);
+        modelAndView.setViewName("/products/delete");
+
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = {"/products/delete/accept/{productId}"}, method = RequestMethod.GET)
+    public ModelAndView deleteAccept( @PathVariable int productId) {
+
+        ModelAndView modelAndView = new ModelAndView();
+        productService.deleteById(productId);
+        modelAndView.setViewName("/products");
+        modelAndView.addObject("successMessage", "Produkt został usunięty");
+        return modelAndView;
+
+    }
+
     @RequestMapping(value="/products/edit", method=RequestMethod.POST)
     public ModelAndView update(@Valid Product product, BindingResult bindingResult, HttpServletRequest request){
 
