@@ -8,13 +8,26 @@
 <h1>Lista użytkowników</h1>
 
 
-<table>
+<table table-dark>
     <tr>
-        <th>Email</th>
-
+        <th>User ID</th>
+        <th>Name</th>
+        <th>info</th>
+        <th>delete</th>
+        <th>edit</th>
     </tr>
     <tr th:each="user : ${users}">
-        <td th:text="${user.name}"></td>
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}">
+        <td>
+            <a class="btn btn-primary" th:href="@{'/users/view/'+${user.id}}"> Info</a>
+        </td>
+        <td>
+            <a class="btn btn-primary" th:href="@{'/users/delete/'+${user.id}}"> Usuń</a>
+        </td>
+        <td>
+            <a class="btn btn-primary" th:href="@{'/users/edit/'+${user.id}}"> Edytuj</a>
+        </td>
     </tr>
 </table>
 </body>

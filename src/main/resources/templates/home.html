@@ -23,6 +23,10 @@
                 type="Submit">Dodaj użytkownika</button>
     </form>
 
+    <form th:action="@{/users/list}" method="get">
+        <button class="btn btn-md btn-danger btn-block" name="create"
+                type="Submit">Lista użytkowników</button>
+    </form>
 
     <div class="panel-group" style="margin-top:40px">
         <div class="panel panel-primary">
