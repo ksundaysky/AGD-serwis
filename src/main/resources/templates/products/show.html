@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Produkty</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/products/show.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="panel-group col-md-12" style="margin-top:60px">
+        <div class="panel panel-primary">
+            <div class="panel-heading" th:text="${product.product_name}">
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-12 info-body">
+                <div class="row info-item col-md-offset-2 col-md-8">
+                    <div class="col-md-2"><strong>Nazwa:</strong></div>
+                    <div class="col-md-4 col-md-offset-2" th:text="${product.product_name}"></div>
+                </div>
+                <div class="row info-item col-md-offset-2 col-md-8">
+                    <div class="col-md-2"><strong>Marka:</strong></div>
+                    <div class="col-md-4 col-md-offset-2" th:text="${product.brand}"></div>
+                </div>
+                <div class="row info-item col-md-offset-2 col-md-8">
+                    <div class="col-md-2"><strong>Model:</strong></div>
+                    <div class="col-md-4 col-md-offset-2" th:text="${product.model}"></div>
+                </div>
+                <div class="row info-item col-md-offset-2 col-md-8">
+                    <div class="col-md-2"><strong>Imię właściciela:</strong></div>
+                    <div class="col-md-4 col-md-offset-2" th:text="${product.name}"></div>
+                </div>
+                <div class="row info-item col-md-offset-2 col-md-8">
+                    <div class="col-md-2"><strong>Nazwisko właściciela:</strong></div>
+                    <div class="col-md-4 col-md-offset-2" th:text="${product.lastName}"></div>
+                </div>
+                <div class="row info-item col-md-offset-2 col-md-8">
+                    <div class="col-md-2"><strong>Notatka:</strong></div>
+                    <div class="col-md-4 col-md-offset-2" th:text="${product.note}"></div>
+                </div>
+            </div>
+            <a class="btn btn-primary" th:href="@{'/products/edit/'+${product.id}}"> Edytuj</a>
+            <a th:href="@{/products}" >Powrót</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

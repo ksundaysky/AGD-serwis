@@ -71,28 +71,30 @@ public class UserController {
         modelAndView.addObject("user", user);
         modelAndView.setViewName("/users/edit");
         List<Role> roleList = roleService.findAll();
-        Map<Integer, String>  roleMap = roleList.stream().collect(Collectors.toMap(Role::getId,Role::getRole));
         modelAndView.addObject("role_map", roleList);
-        //return new ModelAndView("/users/edit","user",user);
         return modelAndView;
     }
     @RequestMapping(value="/users/update", method=RequestMethod.POST)
     public ModelAndView updateUser(@Valid User user, BindingResult bindingResult){
-        ModelAndView modelAndView = new ModelAndView();
+
         User userExists = userService.findUserById(user.getId());
         if (userExists != null) {
             userExists.setEmail(user.getEmail());
-//            userExists.setRoles(user.getRoles());
             userExists.setRole_id(user.getRole_id());
             userExists.setName(user.getName());
             userExists.setLastName(user.getLastName());
-            userService.updateUser(userExists);
-        }
-        modelAndView.addObject("successMessage", "Pracownik został edytowany");
-        modelAndView.addObject("user",new User());
-        modelAndView.setViewName("/home");
 
-        return modelAndView;
+        }
+        if (bindingResult.hasFieldErrors("email") || bindingResult.hasFieldErrors("name") || bindingResult.hasFieldErrors("lastName")) {
+            ModelAndView modelAndView = new ModelAndView();
+            modelAndView.addObject("user", user);
+            List<Role> roleList = roleService.findAll();
+            modelAndView.addObject("role_map", roleList);
+            modelAndView.setViewName("/users/edit");
+            return modelAndView;
+        }
+        userService.updateUser(userExists);
+        return new ModelAndView("redirect:/users/list","udane","1");
     }
 
     @RequestMapping(value = "/users/list", method = RequestMethod.GET)
