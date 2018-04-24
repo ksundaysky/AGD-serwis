@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Edycja produktu</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Edycja produktu: <span th:text="${product.product_name}"></span>
+            </div>
+        </div>
+        <div class="panel-body">
+            <p class="admin-message-text text-center" th:utext="${successMessage}"></p>
+            <form autocomplete="off" action="#" th:action="@{/products/edit}"
+                  th:object="${product}" method="post" class="form-horizontal"
+                  role="form">
+                <input type="hidden" th:field="*{id}" placeholder="id">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Nazwa produktu</label>
+                    <div class="col-sm-6">
+                        <label th:if="${#fields.hasErrors('product_name')}" th:errors="*{product_name}"
+                               class="validation-message"></label>
+                        <input type="text" th:field="*{product_name}" placeholder="Nazwa produktu"
+                               class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Marka</label>
+                    <div class="col-sm-6">
+                        <label	th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"
+                                  class="validation-message"></label>
+                        <input type="text" th:field="*{brand}"
+                               placeholder="Marka" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Model </label>
+                    <div class="col-sm-6">
+                        <input type="text" th:field="*{model}" placeholder="Model"
+                               class="form-control" /> <label
+                            th:if="${#fields.hasErrors('model')}" th:errors="*{model}"
+                            class="validation-message"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Imię właściciela </label>
+                    <div class="col-sm-6">
+                        </select>
+                        <input type="text" th:field="*{name}"
+                               placeholder="Nazwisko" class="form-control" /> <label
+                            th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                            class="validation-message"></label>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Nazwisko właściciela </label>
+                    <div class="col-sm-6">
+                        <input type="text" th:field="*{lastName}"
+                               placeholder="Nazwisko" class="form-control" /> <label
+                            th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                            class="validation-message"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Notatka </label>
+                    <div class="col-sm-6">
+                        <input type="text" th:field="*{note}"
+                               placeholder="Notatka" class="form-control" /> <label
+                            th:if="${#fields.hasErrors('note')}" th:errors="*{note}"
+                            class="validation-message"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-7 col-md-offset-3">
+                        <button type="submit" class="btn btn-primary btn-block">Zapisz</button>
+                        <a class="btn btn-primary" th:href="@{/products}"> Powrót </a>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+# 1. Format ogólny commit message:
+
+# <typ> : <id_taska> : <treść_taska>
+
+# <treść>
+
+# <stopka>
+
+
+
+# 2. Typ wiadomości
+
+# Linie tekstu nie powinny być dłuższe niż 80 znaków.
+# <typ> oraz <treść_taska> powinny być pisane małymi literami.
+
+# Dozwolone wartośći <typ>:
+# feat - nowa funkcjonalność dla użytkownika (new feature for the user, not a new feature for build script)
+# fix - usunięty błąd dla użytkwnika
+# docs - zmiany w dokumentacji projektu
+# style - formatowanie, brakujące średniki
+# refactor - refaktoryzacja kodu, np. przemianowanie zmiennych, szeroko rozumiany "clean code"
+# test - dodawanie nowych testów, refaktoryzacja testów
+# other - inne
+
+# 3. Treść
+
+# Rzeczowe opisanie zmian zachodzących wraz z commitem oraz powodów, dla których zostały wprowadzone ew. zmiany wraz z opisem różnicy w stosunku do poprzedniego zachowania
+
+# 4. Stopka (opcjonalnie)
+
+# W stopce opcjonalnie można zamieścić bardzo ważne z punktu widzenia kolejnych commitów informacje, takie które powinni zapamiętać inni członkowie zespołu
