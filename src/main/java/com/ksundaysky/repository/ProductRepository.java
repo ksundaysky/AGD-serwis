@@ -11,4 +11,6 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     Product findById(int id);
     @Transactional
     Long deleteById(int id);
+
+    Product findBySerial(String serial_number);
 }

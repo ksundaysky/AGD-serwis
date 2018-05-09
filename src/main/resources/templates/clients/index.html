@@ -35,7 +35,7 @@
                 <div class="col-md-3" th:text="${client.client_surname}"></div>
                 <div class="col-md-3" th:text="${client.phone_number}"></div>
                 <div class="col-md-3">
-                    <a th:href="@{'clients/'+${client.id}}" >Zobacz</a>
+                    <a th:href="@{'clients/show/'+${client.id}}" >Zobacz</a>
                     <a th:href="@{'clients/edit/'+${client.id}}" >Edytuj</a>
                     <a th:href="@{'clients/delete/'+${client.id}}" >Usuń</a>
                 </div>

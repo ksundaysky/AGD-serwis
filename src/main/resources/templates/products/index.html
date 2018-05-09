@@ -27,7 +27,8 @@
                     <div class="col-md-2" ><strong>Marka</strong></div>
                     <div class="col-md-2" ><strong>Model</strong></div>
                     <div class="col-md-2" ><strong>Imię</strong></div>
-                    <div class="col-md-2" ><strong>Nazwisko</strong></div>
+                    <div class="col-md-1" ><strong>Nazwisko</strong></div>
+                    <div class="col-md-1" ><strong>Numer seryjny</strong></div>
                     <div class="col-md-1" ><strong></strong></div>
 
                 </div>
@@ -37,7 +38,9 @@
                 <div class="col-md-2" th:text="${product.brand}"></div>
                 <div class="col-md-2" th:text="${product.model}"></div>
                 <div class="col-md-2" th:text="${product.name}"></div>
-                <div class="col-md-2" th:text="${product.lastName}"></div>
+                <div class="col-md-1" th:text="${product.lastName}"></div>
+                <div class="col-md-1" th:text="${product.serial}"></div>
+
                 <div class="col-md-1">
                     <a th:href="@{'products/'+${product.id}}" >Zobacz</a>
                     <a th:href="@{'products/edit/'+${product.id}}" >Edytuj</a>

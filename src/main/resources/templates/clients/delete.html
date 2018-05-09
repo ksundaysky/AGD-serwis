@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Usuwanie klienta</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/products/show.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div th:replace="fragments/header :: header">...</div>
+<div class="container">
+<div class="panel-group" style="margin-top:40px">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <label>Id klienta:&nbsp;</label><span th:utext="${client.id}"></span>
+        </div>
+        <div class="panel-body">
+            <label>Nazwisko:</label>
+            <p th:utext="${client.client_surname}"></p>
+            <label>Imię:</label>
+            <p th:utext="${client.client_name}"></p>
+            <label>Numer telefonu:</label>
+            <p th:utext="${client.phone_number}"></p>
+            <label>Miasto:</label>
+            <p th:utext="${client.city}"></p>
+            <label>Kod pocztowy</label>
+            <p th:utext="${client.postcode}"></p>
+            <label>Ulica:</label>
+            <p th:utext="${client.street}"></p>
+            <label>Nr lokalu:</label>
+            <p th:utext="${client.street_local_number}"></p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-7 col-md-offset-3">
+<form th:action="@{/clients/delete/accept/} + ${client.id}" method="get">
+    <button type="submit" class="btn btn-primary btn-block">Usuń</button>
+</form>
+<a class="btn btn-primary" th:href="@{/clients}"> Powrót </a>
+</div>
+</div>
+
+</body>
+</html>

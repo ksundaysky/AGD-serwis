@@ -24,4 +24,17 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client findById(int id) { return clientRepository.findById(id);}
+
+    @Override
+    public void updateClient(Client client) {
+
+        clientRepository.save(client);
+    }
+
+    @Override
+    public void deleteById(int id) {
+
+        clientRepository.deleteById(id);
+        //userRepository.delete(Long.valueOf((long)id));
+    }
 }

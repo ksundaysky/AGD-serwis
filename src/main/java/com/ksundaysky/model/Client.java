@@ -54,6 +54,9 @@ public class Client {
     @Pattern(regexp="[a-zA-Z0-9 ]*",message = "*Niepoprawny numer domu")
     private String street_local_number;
 
+    public Client() {
+    }
+
     public int getId() {
 
         return id;
@@ -89,9 +92,7 @@ public class Client {
         return phone_number;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
-    }
+    public void setPhone_number(String phone_number) { this.phone_number = phone_number; }
 
     public String getPostcode() {
         return postcode;

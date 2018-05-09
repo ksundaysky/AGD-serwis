@@ -10,4 +10,6 @@ public interface ClientService {
     public void saveClient(Client client);
     public List<Client> findAll();
     public Client findById(int id);
+    public void updateClient(Client user);
+    public void deleteById(int id);
 }

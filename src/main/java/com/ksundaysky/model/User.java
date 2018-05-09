@@ -50,15 +50,15 @@ public class User {
     //@NotBlank(message = "Provide your experience")
     @Digits(integer=10, fraction=0, message = "provide valid experience")
     private String experience;
-
     @Column(name = "job_starting")
-    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
+    //@DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
     @NotNull(message = "provida valid date")
     private Date jobStartingDate;
     @Column(name = "active")
     private int active;
     @Column(name = "role_id")
     private int role_id;
+    private String RoleName;
 
 
 //    @ManyToMany(cascade = CascadeType.ALL)
@@ -69,7 +69,7 @@ public class User {
     public User() {
     }
 
-    public User(int id, String email, String password, String name, String lastName, int active, int role_id, String roleName) {
+    public User(int id, String email, String password, String name, String lastName, int active, int role_id, String experience,Date jobStartingDate) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -77,6 +77,10 @@ public class User {
         this.lastName = lastName;
         this.active = active;
         this.role_id = role_id;
+
+        RoleName = roleName;
+        this.experience = experience;
+        this.jobStartingDate = jobStartingDate;
 
     }
 
@@ -141,6 +145,12 @@ public class User {
 //        this.roles.add(role);
 //    }
 
+    public String getRoleName() {
+        return RoleName;
+    }
+    public void setRoleName(String roleName) {
+        RoleName = roleName;
+    }
 
     public int getRole_id() {
         return role_id;

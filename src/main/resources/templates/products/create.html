@@ -30,7 +30,7 @@
                     <div class="col-sm-6">
 
                         <input type="text" th:field="*{product_name}" placeholder="Nazwa produktu"
-                               class="form-control" />
+                               class="form-control" required />
                         <label th:if="${#fields.hasErrors('product_name')}" th:errors="*{product_name}"
                                class="validation-message"></label>
                     </div>
@@ -41,7 +41,7 @@
                     <div class="col-sm-6">
 
                         <input type="text" th:field="*{brand}"
-                               placeholder="Marka" class="form-control" />
+                               placeholder="Marka" class="form-control" required/>
                         <label	th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"
                                   class="validation-message"></label>
                     </div>
@@ -50,7 +50,7 @@
                     <label class="col-md-4 control-label">Model</label>
                     <div class="col-sm-6">
                         <input type="text" th:field="*{model}" placeholder="Model"
-                               class="form-control" /> <label
+                               class="form-control" required/> <label
                             th:if="${#fields.hasErrors('model')}" th:errors="*{model}"
                             class="validation-message"></label>
                     </div>
@@ -59,7 +59,7 @@
                     <label class="col-md-4 control-label">Imię właściciela</label>
                     <div class="col-sm-6">
                         <input type="text" th:field="*{name}"
-                               placeholder="Imię" class="form-control" /> <label
+                               placeholder="Imię" class="form-control" required/> <label
                             th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
                             class="validation-message"></label>
                     </div>
@@ -69,7 +69,7 @@
                     <label class="col-md-4 control-label">Nazwisko właściciela </label>
                     <div class="col-sm-6">
                         <input type="text" th:field="*{lastName}"
-                               placeholder="Nazwisko" class="form-control" /> <label
+                               placeholder="Nazwisko" class="form-control" required/> <label
                             th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
                             class="validation-message"></label>
                     </div>
@@ -78,9 +78,9 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label">Numer Seryjny </label>
                     <div class="col-sm-6">
-                        <input type="text" th:field="*{serial_number}"
-                               placeholder="Numer seryjny" class="form-control" /> <label
-                            th:if="${#fields.hasErrors('serial_number')}" th:errors="*{serial_number}"
+                        <input type="number" th:field="*{serial}"
+                               placeholder="Numer seryjny" class="form-control" required/> <label
+                            th:if="${#fields.hasErrors('serial')}" th:errors="*{serial}"
                             class="validation-message"></label>
                     </div>
                 </div>
