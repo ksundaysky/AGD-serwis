@@ -36,4 +36,14 @@ public class VisitServiceImpl implements VisitService{
     }
 
 
+
+    @Override
+    public void update(Visit visit) {
+
+//        Role[] role = new Role[1];
+////        user.getRoles().toArray(role);
+////        Role userRole = roleRepository.findByRole(role[0].getRole());
+////        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        visitRepository.save(visit);
+    }
 }

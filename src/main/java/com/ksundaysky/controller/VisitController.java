@@ -1,7 +1,11 @@
 package com.ksundaysky.controller;
 
 import com.ksundaysky.model.Product;
+import com.ksundaysky.model.Client;
+import com.ksundaysky.model.Product;
 import com.ksundaysky.model.Visit;
+import com.ksundaysky.service.ClientService;
+import com.ksundaysky.service.ProductService;
 import com.ksundaysky.service.VisitService;
 import com.ksundaysky.model.User;
 import com.ksundaysky.service.UserService;
@@ -28,6 +32,10 @@ public class VisitController {
     private VisitService visitService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private ClientService clientService;
+    @Autowired
+    private ProductService productService;
 
     @RequestMapping(value = {"/clients/{client_id}/products/{id}/visits/create"}, method = RequestMethod.GET)
     public ModelAndView createNewVisit(@PathVariable("id") int id, @PathVariable("client_id") int client_id) {
@@ -81,6 +89,9 @@ public class VisitController {
     {
         ModelAndView modelAndView = new ModelAndView();
         List<Visit> visits = visitService.findAll();
+        for(Visit visit : visits){
+            setVisitData(visit);
+        }
         modelAndView.addObject("visits",visits);
         modelAndView.setViewName("/clients/products/visits/index");
         String successMessage = (String)request.getSession().getAttribute("successMessage");
@@ -105,4 +116,55 @@ public class VisitController {
 
         return modelAndView;
     }
+
+    @RequestMapping(value = "/clients/{client_id}/products/{product_id}/visits/repair/{id}")
+    public ModelAndView repair(@PathVariable("product_id") int product_id, @PathVariable("client_id") int client_id, @PathVariable("id") Integer id) {
+
+        ModelAndView modelAndView = new ModelAndView();
+        Visit visit = visitService.findVisitById(id);
+
+        if(visit == null){
+            modelAndView.addObject("errorMessage", "Wizyta o danym id nie istnieje");
+        }
+
+        modelAndView.addObject("visit", visit);
+        modelAndView.setViewName("/clients/products/visits/repair");
+        return modelAndView;
+
+    }
+
+    @RequestMapping(value = "/clients/{client_id}/products/{product_id}/visits/update", method = RequestMethod.POST)
+    public ModelAndView update(@Valid Visit visit, BindingResult bindingResult, @PathVariable int product_id, @PathVariable("client_id") int client_id) {
+
+        ModelAndView modelAndView = new ModelAndView();
+        Visit visitExists = visitService.findVisitById(visit.getId());
+        if (visitExists != null) {
+            visitExists.setActual_description(visit.getActual_description());
+            visitExists.setRepair_date(visit.getRepair_date());
+            visitExists.setPick_up_date(visit.getPick_up_date());
+            visitExists.setCosts(visit.getCosts());
+            visitExists.setNote(visit.getNote());
+            visitService.update(visitExists);
+        }
+        else{
+            modelAndView.addObject("visit", visit);
+            modelAndView.setViewName("/clients/products/visits/repair");
+            return modelAndView;
+        }
+        modelAndView.addObject("successMessage", "Wizyta została edytowana");
+        modelAndView.setViewName("/home");
+
+        return modelAndView;
+    }
+
+    private void setVisitData(Visit visit) {
+        Client client = clientService.findById(visit.getClient_id());
+        String clientNameSurname = client.getClient_name() + ' ' + client.getClient_surname();
+        visit.setClientNameSurname(clientNameSurname);
+        User serviceman = userService.findUserById(visit.getSerwisant_id());
+        visit.setServisantSurname(serviceman.getLastName());
+        Product product = productService.findById(visit.getProduct_id());
+        visit.setProductName(product.getProduct_name());
+    }
+
 }

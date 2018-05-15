@@ -66,6 +66,38 @@ public class Visit {
     @Column(name = "description_actual")
     private String actual_description;
 
+
+    private String clientNameSurname;
+
+    private String servisantSurname;
+
+    private String productName;
+
+    public String getServisantSurname() {
+        return servisantSurname;
+    }
+
+    public void setServisantSurname(String servisantSurname) {
+        this.servisantSurname = servisantSurname;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getClientNameSurname() {
+        return clientNameSurname;
+    }
+
+    public void setClientNameSurname(String clientNameSurname) {
+        this.clientNameSurname = clientNameSurname;
+    }
+
+
     public int getId() {
         return id;
     }

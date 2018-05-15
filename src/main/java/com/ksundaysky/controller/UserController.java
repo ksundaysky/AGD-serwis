@@ -135,7 +135,7 @@ public class UserController {
 
             users = userService.findAll().stream()
                     .filter(user -> user.getRole_id() == roleId)
-                    .map(user -> new User(user.getId(),user.getEmail(), user.getPassword(), user.getName(), user.getLastName(), user.getActive(), user.getRole_id(), user.getExperience(),user.getJobStartingDate()))
+                    //.map(user -> new User(user.getId(),user.getEmail(), user.getPassword(), user.getName(), user.getLastName(), user.getActive(), user.getRole_id(), user.getExperience(),user.getJobStartingDate()))
                     .collect(Collectors.toList());
         }
 
