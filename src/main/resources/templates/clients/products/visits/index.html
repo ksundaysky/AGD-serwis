@@ -27,10 +27,10 @@
                     <div class="col-md-2" ><strong>Data odbioru od klienta</strong></div>
                     <div class="col-md-2" ><strong>Data odbioru</strong></div>
                     <div class="col-md-2" ><strong>Data naprawy</strong></div>
-                    <div class="col-md-1" ><strong>Id produktu</strong></div>
+                    <div class="col-md-1" ><strong>Produkt</strong></div>
                    <!-- <div class="col-md-1" ><strong>Id klienta</strong></div>-->
-                    <div class="col-md-1" ><strong>Id serwisanta</strong></div>
-                    <div class="col-md-1" ><strong>Id klienta</strong></div>
+                    <div class="col-md-1" ><strong>Serwisant</strong></div>
+                    <div class="col-md-1" ><strong>Klient</strong></div>
                     <div class="col-md-1" ><strong></strong></div>
 
                 </div>
@@ -40,14 +40,13 @@
                     <div class="col-md-2" th:text="${visit.receipt_date}"></div>
                     <div class="col-md-2" th:text="${visit.pick_up_date}"></div>
                     <div class="col-md-2" th:text="${visit.repair_date}"></div>
-                    <div class="col-md-1" th:text="${visit.productId}"></div>
+                    <div class="col-md-1" th:text="${visit.productName}"></div>
                     <!--<div class="col-md-2" th:text="${visit.client_id}" ></div>-->
-                    <div class="col-md-1" th:text="${visit.serwisant_id}"></div>
-                    <div class="col-md-1" th:text="${visit.client_id}"></div>
+                    <div class="col-md-1" th:text="${visit.servisantSurname}"></div>
+                    <div class="col-md-1" th:text="${visit.clientNameSurname}"></div>
                     <div class="col-md-1">
+                        <a th:href="@{'/clients/'+${visit.client_id}+'/products/'+${visit.product_id}+'/visits/repair/'+${visit.id}}" >Edytuj naprawę</a>
                         <a th:href="@{'/clients/'+${visit.client_id}+'/products/'+${visit.productId}+'/visits/'+${visit.id}}" >Zobacz</a>
-                        <a th:href="@{'/clients/'+${visit.client_id}+'/products/'+${visit.productId}+'/visits/edit/'+${visit.id}}" >Edytuj</a>
-                        <a th:href="@{'/clients/'+${visit.client_id}+'/products/'+${visit.productId}+'/visits/delete/'+${visit.id}}" >Usuń</a>
                     </div>
             </div>
         </div>
