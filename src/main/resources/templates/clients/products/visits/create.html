@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Dodawanie wizyty</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+<div th:replace="fragments/header :: header">...</div>
+<div class="container">
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Dodawanie wizyty:
+            </div>
+        </div>
+        <div class="panel-body">
+            <form autocomplete="off" action="#" th:action="@{|/clients/${client_id}/products/${product_id}/visits/create|}"
+                  th:object="${visit}" method="post" class="form-horizontal"
+                  role="form">
+
+                <!--<div class="form-group">-->
+                    <!--<label class="col-md-4 control-label">Id klienta</label>-->
+                    <!--<div class="col-sm-6">-->
+
+                        <!--<input type="text" th:field="*{client_id}" placeholder="Id klienta"-->
+                               <!--class="form-control" />-->
+                        <!--<label th:if="${#fields.hasErrors('client_id')}" th:errors="*{client_id}"-->
+                               <!--class="validation-message"></label>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Szacowany opis problemu</label>
+                    <div class="col-sm-6">
+
+                        <input type="text" th:field="*{estimated_description}" placeholder="Szacowany opis problemu"
+                               class="form-control" required/>
+                        <label th:if="${#fields.hasErrors('estimated_description')}" th:errors="*{estimated_description}"
+                               class="validation-message"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Data odbioru od klienta</label>
+                    <div class="col-sm-6">
+
+                        <input type="datetime-local" th:field="*{receipt_date}" placeholder="Data odbioru sprzętu od klienta"
+                               class="form-control"  required/>
+                        <label th:if="${#fields.hasErrors('receipt_date')}" th:errors="*{receipt_date}"
+                               class="validation-message"></label>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Tryb odbioru zepsutego sprzętu: </label>
+                    <div class="col-sm-6">
+                        <select class="form-control" th:field="*{receipt_type}" >
+                            <option th:value="przywiezienie" th:text="przywiezienie"></option>
+                            <option th:value="odbior" th:text="odbior"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Dostępny serwisant: </label>
+                    <div class="col-sm-6">
+                        <select class="form-control" th:field="*{serwisant_id}" >
+                            <option  th:each="sopt:${serwisantList}"
+                                     th:value="${sopt.id}" th:text="|${sopt.name} ${sopt.lastName} ${sopt.email}|">Japan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-7 col-md-offset-3">
+                        <button type="submit" class="btn btn-primary btn-block">Dodaj</button>
+                    </div>
+                </div>
+
+                <span th:utext="${successMessage}"></span>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Komponenty</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/products/show.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">...</div>
+<div class="container">
+    <div class="panel-group col-md-12" style="margin-top:60px">
+        <div class="panel panel-primary">
+            <div class="panel-heading" th:text="${component.component_name}">
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-12 info-body">
+                <div class="row info-item col-md-offset-2 col-md-8">
+                    <div class="col-md-2"><strong>Nazwa:</strong></div>
+                    <div class="col-md-4 col-md-offset-2" th:text="${component.component_name}"></div>
+                </div>
+                <div class="row info-item col-md-offset-2 col-md-8">
+                    <div class="col-md-2"><strong>Rodzaj:</strong></div>
+                    <div class="col-md-4 col-md-offset-2" th:text="${component.type}"></div>
+                </div>
+                <div class="row info-item col-md-offset-2 col-md-8">
+                    <div class="col-md-2"><strong>Cena:</strong></div>
+                    <div class="col-md-4 col-md-offset-2" th:text="${component.price}"></div>
+                </div>
+            </div>
+            <a class="btn btn-primary" th:href="@{'/components/edit/'+${component.id}}"> Edytuj</a>
+            <a th:href="@{/components}" >Powrót</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

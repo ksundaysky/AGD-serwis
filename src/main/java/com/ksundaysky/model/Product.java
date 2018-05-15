@@ -1,7 +1,5 @@
 package com.ksundaysky.model;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -27,22 +25,33 @@ public class Product {
         private String model;
         @Column(name = "owner_name")
         @NotEmpty(message = "*Uzupełnij imię właściciela")
-        private String name;
-        @Column(name = "owner_last_name")
-        @NotEmpty(message = "*Uzupełnij nazwisko właściciela")
-        private String lastName;
-        @Column(name = "product_note")
         private String note;
         @Column(name = "unique_number")
         @Digits(integer=10, fraction=0, message = "provide valid serial number")
-        private String serial_number;
+        private String serial;
+        //id wlasciciela produktu
+        @Column(name = "client_id")
+        private int client_id;
 
-    public String getSerial_number() {
-        return serial_number;
+        public Product(){
+
+        }
+        public Product(int id, String product_name, String brand, String model, String note, String serial, int client_id)
+        {
+            this.id=id;
+            this.product_name=product_name;
+            this.brand=brand;
+            this.model=model;
+            this.note=note;
+            this.serial=serial;
+            this.client_id=client_id;
+        }
+    public String getSerial() {
+        return serial;
     }
 
-    public void setSerial_number(String serial_number) {
-        this.serial_number = serial_number;
+    public void setSerial(String serial) {
+        this.serial = serial;
     }
 
     public String getNote() {
@@ -85,20 +94,12 @@ public class Product {
             this.model = model;
         }
 
-        public String getName() {
-            return name;
-        }
 
-        public void setName(String name) {
-            this.name = name;
-        }
+    public void setClient_id(int client_id) {
+        this.client_id = client_id;
+    }
 
-        public String getLastName() {
-            return lastName;
-        }
-
-        public void setLastName(String lastName) {
-            this.lastName = lastName;
-        }
-
+    public int getClient_id() {
+        return client_id;
+    }
 }

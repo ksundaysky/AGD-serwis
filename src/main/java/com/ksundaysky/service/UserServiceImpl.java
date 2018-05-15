@@ -61,4 +61,8 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
         //userRepository.delete(Long.valueOf((long)id));
     }
+//    @Override
+//    public List<User> findSerwisants(){
+//        return userRepository.findUsersByRole_id(2);
+//    }
 }

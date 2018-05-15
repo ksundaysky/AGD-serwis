@@ -26,22 +26,48 @@
                         <li><a th:href="@{/users/create}"  >Dodaj użytkownika</a></li>
                     </ul>
                 </li>
+                <!--<li class="dropdown">-->
+                    <!--<a class="dropdown-toggle" data-toggle="dropdown" th:href="@{/products}" >Produkty-->
+                        <!--<span class="caret"></span></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a th:href="@{/products}" >Lista produktów</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" th:href="@{/products}" >Produkty
-                        <span class="caret"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" th:href="@{/components}" >Komponenty
+                    <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a th:href="@{/products}" >Lista produktów</a></li>
-                        <li><a th:href="@{/products/create}" >Dodaj produkt</a></li>
+                        <li><a th:href="@{/components}" >Lista komponentów</a></li>
+                        <li><a th:href="@{/components/create}" >Dodaj komponent</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" th:href="@{/clients}" >Klienci
-                        <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a th:href="@{/clients}" >Lista klientów</a></li>
-                        <li><a th:href="@{/clients/create}" >Dodaj klienta</a></li>
-                    </ul>
+                <li>
+                    <a th:href="@{/clients}">Klienci</a>
                 </li>
+                <li>
+                    <a th:href="@{/products}">Produkty</a>
+                </li>
+                <li>
+                    <a th:href="@{/visits}">Wizyty</a>
+                </li>
+
+                <!--<li class="dropdown">-->
+                          <!---->
+                    <!--<a class="dropdown-toggle" data-toggle="dropdown" th:href="@{/clients}" >Klienci-->
+                        <!--<span class="caret"></span></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a th:href="@{/clients}" >Lista klientów</a></li>-->
+                        <!--<li><a th:href="@{/clients/create}" >Dodaj klienta</a></li>-->
+
+                    <!--</ul>-->
+                <!--</li>-->
+                <!--<li class="dropdown">-->
+                    <!--<a class="dropdown-toggle" data-toggle="dropdown" th:href="@{/visits}" >Wizyty-->
+                        <!--<span class="caret"></span></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a th:href="@{/visits}" >Lista wizyt</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
 
             </ul>
             <ul class="nav navbar-nav navbar-right">

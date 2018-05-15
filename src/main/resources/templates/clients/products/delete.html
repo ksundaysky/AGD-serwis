@@ -21,17 +21,15 @@
             <p th:utext="${product.brand}"></p>
             <label>Model:</label>
             <p th:utext="${product.model}"></p>
-            <label>Imie właściciela:</label>
-            <p th:utext="${product.name}"></p>
-            <label>Nazwisko właściciela:</label>
-            <p th:utext="${product.lastName}"></p>
+            <label>Numer seryjny:</label>
+            <p th:utext="${product.serial}"></p>
             <label>Notatka:</label>
             <p th:utext="${product.note}"></p>
         </div>
     </div>
 </div>
 
-<form th:action="@{/products/delete/accept/} + ${product.id}" method="get">
+<form th:action="@{|/clients/${product.client_id}/products/delete/accept/${product.id}|}" method="get">
     <button class="btn btn-md btn-danger btn-block" name="delete"
             type="Submit">Usuń</button>
     <button class="btn btn-md btn-primary btn-block" th:href="@{/products}"> Powrót </button>

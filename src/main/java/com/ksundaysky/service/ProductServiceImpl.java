@@ -33,4 +33,9 @@ public class ProductServiceImpl implements ProductService {
 
         productRepository.deleteById(id);
     }
+
+    @Override
+    public Product findBySerialNumber(String serial_number) {
+        return productRepository.findBySerial(serial_number);
+    }
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Wizyty</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/products/index.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">...</div>
+<div class="container">
+    <div class="panel-group col-md-12" style="margin-top:60px">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Lista wizyt
+            </div>
+        </div>
+        <div class="panel-body">
+            <p class="admin-message-text text-center" th:utext="${successMessage}"></p>
+            <div class="col-md-12 list-body">
+                <div class="row list-title">
+                    <div class="col-md-1" ><strong>Id</strong></div>
+                    <div class="col-md-1" ><strong>Tryb odbioru</strong></div>
+                    <div class="col-md-2" ><strong>Data odbioru od klienta</strong></div>
+                    <div class="col-md-2" ><strong>Data odbioru</strong></div>
+                    <div class="col-md-2" ><strong>Data naprawy</strong></div>
+                    <div class="col-md-1" ><strong>Produkt</strong></div>
+                   <!-- <div class="col-md-1" ><strong>Id klienta</strong></div>-->
+                    <div class="col-md-1" ><strong>Serwisant</strong></div>
+                    <div class="col-md-1" ><strong>Klient</strong></div>
+                    <div class="col-md-1" ><strong></strong></div>
+
+                </div>
+                <div class="row list-item" th:each="visit:${visits}">
+                    <div class="col-md-1" th:text="${visit.id}"</div>
+                    <div class="col-md-1" th:text="${visit.receipt_type}" ></div>
+                    <div class="col-md-2" th:text="${visit.receipt_date}"></div>
+                    <div class="col-md-2" th:text="${visit.pick_up_date}"></div>
+                    <div class="col-md-2" th:text="${visit.repair_date}"></div>
+                    <div class="col-md-1" th:text="${visit.productName}"></div>
+                    <!--<div class="col-md-2" th:text="${visit.client_id}" ></div>-->
+                    <div class="col-md-1" th:text="${visit.servisantSurname}"></div>
+                    <div class="col-md-1" th:text="${visit.clientNameSurname}"></div>
+                    <div class="col-md-1">
+                        <a th:href="@{'/clients/'+${visit.client_id}+'/products/'+${visit.product_id}+'/visits/repair/'+${visit.id}}" >Edytuj naprawę</a>
+                    </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+</body>
+</html>

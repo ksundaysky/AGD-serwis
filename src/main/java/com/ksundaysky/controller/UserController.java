@@ -92,6 +92,8 @@ public class UserController {
             userExists.setRole_id(user.getRole_id());
             userExists.setName(user.getName());
             userExists.setLastName(user.getLastName());
+            userExists.setExperience(user.getExperience());
+            userExists.setJobStartingDate(user.getJobStartingDate());
             userService.updateUser(userExists);
         }
         modelAndView.addObject("successMessage", "Pracownik został edytowany");
@@ -126,14 +128,14 @@ public class UserController {
         if (roleId == null || roleId == 0) {
             users = userService.findAll().stream()
                     .map(user -> new User(user.getId(),user.getEmail(), user.getPassword(), user.getName(), user.getLastName(), user.getActive(),
-                            user.getRole_id(), roleService.getRoleById(user.getRole_id()).getRole()))
+                            user.getRole_id(), user.getExperience(),user.getJobStartingDate()))
                     .collect(Collectors.toList());
         } else {
             String roleName = roleService.getRoleById(roleId).getRole();
 
             users = userService.findAll().stream()
                     .filter(user -> user.getRole_id() == roleId)
-                    .map(user -> new User(user.getId(),user.getEmail(), user.getPassword(), user.getName(), user.getLastName(), user.getActive(), user.getRole_id(), roleName))
+                    //.map(user -> new User(user.getId(),user.getEmail(), user.getPassword(), user.getName(), user.getLastName(), user.getActive(), user.getRole_id(), user.getExperience(),user.getJobStartingDate()))
                     .collect(Collectors.toList());
         }
 

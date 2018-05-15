@@ -31,10 +31,15 @@
                         <div class="col-md-6"><strong>Email:</strong></div>
                         <div class="col-md-4 col-md-offset-2" th:text="${user.email}"></div>
                     </div>
-                    <!--div class="row info-item col-md-offset-2 col-md-8">
-                        <div class="col-md-6"><strong>Rola:</strong></div>
-                        <div class="col-md-4 col-md-offset-2" th:text="${user.getRole}"></div>
-                    </--div> -->
+                    <div class="row info-item col-md-offset-2 col-md-8">
+                        <div class="col-md-6"><strong>Doświadczenie:</strong></div>
+                        <div class="col-md-4 col-md-offset-2" th:text="${user.experience}"></div>
+                    </div>
+                    <div class="row info-item col-md-offset-2 col-md-8">
+                        <div class="col-md-6"><strong>Data rozpoczęcia:</strong></div>
+                        <div class="col-md-4 col-md-offset-2" th:text="${user.jobStartingDate}"></div>
+                    </div>
+                   
                     <div class="row info-item col-md-offset-2 col-md-8">
                         <div class="col-md-6"><strong>Id:</strong></div>
                         <div class="col-md-4 col-md-offset-2" th:text="${user.id}"></div>

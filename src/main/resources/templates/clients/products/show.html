@@ -32,20 +32,23 @@
                     <div class="col-md-4 col-md-offset-2" th:text="${product.model}"></div>
                 </div>
                 <div class="row info-item col-md-offset-2 col-md-8">
-                    <div class="col-md-2"><strong>Imię właściciela:</strong></div>
-                    <div class="col-md-4 col-md-offset-2" th:text="${product.name}"></div>
+                    <div class="col-md-2"><strong>Id wlasciciela:</strong></div>
+                    <div class="col-md-4 col-md-offset-2" th:text="${product.client_id}"></div>
                 </div>
                 <div class="row info-item col-md-offset-2 col-md-8">
-                    <div class="col-md-2"><strong>Nazwisko właściciela:</strong></div>
-                    <div class="col-md-4 col-md-offset-2" th:text="${product.lastName}"></div>
+                    <div class="col-md-2"><strong>Numer seryjny:</strong></div>
+                    <div class="col-md-4 col-md-offset-2" th:text="${product.serial}"></div>
                 </div>
                 <div class="row info-item col-md-offset-2 col-md-8">
                     <div class="col-md-2"><strong>Notatka:</strong></div>
                     <div class="col-md-4 col-md-offset-2" th:text="${product.note}"></div>
                 </div>
+
             </div>
-            <a class="btn btn-primary" th:href="@{'/products/edit/'+${product.id}}"> Edytuj</a>
+
+            <a class="btn btn-primary" th:href="@{'/clients/'+${product.client_id}+'/products/edit/'+${product.id}}"> Edytuj</a>
             <a th:href="@{/products}" >Powrót</a>
+            <a th:href="@{'/clients/'+${product.client_id}+'/products/'+${product.id}+'/visits/create'}">Utwórz wizytę</a>
         </div>
     </div>
 </div>

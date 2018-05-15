@@ -31,28 +31,31 @@ public class Client {
     private String client_surname;
 
     @Column(name = "phone_number")
-    @Digits(integer=10, fraction=0, message="*Numer telefonu powinien zawierać tylko cyfry")
+    @Digits(integer=10, fraction=0, message="*Numer telefonu powinien zawierać maksymalnie 10 cyfr")
     @NotEmpty(message = "*Uzupełnij numer telefonu")
     private String phone_number;
 
     @Column(name = "city")
-    @Pattern(regexp="[a-zA-Z- ]*", message = "*Niepoprawny format miasta")
+    @Pattern(regexp="[a-zA-Z- ]+", message = "*Poprawnie uzupełnij miasto")
     @Size(max=30, message = "*Zbyt długa nazwa miasta")
     private String city;
 
     @Column(name = "postcode")
-    @Pattern(regexp="(\\d{2}-\\d{3}){0,1}", message = "*Przykładowy kod pocztowy: 12-345")
+    @Pattern(regexp="(\\d{2}-\\d{3}){1}", message = "*Przykładowy kod pocztowy: 12-345")
     private String postcode;
 
     @Column(name = "street")
-    @Pattern(regexp="[a-zA-Z-' ]*", message = "*Niepoprawny format ulicy")
+    @Pattern(regexp="[a-zA-Z-' ]+", message = "*Poprawnie uzupełnij ulicę")
     @Size(max=30, message = "Zbyt długa nazwa ulicy")
     private String street;
 
     @Column(name = "street_local_number")
     @Size(max=10, message = "Zbyt długi numer domu i lokalu")
-    @Pattern(regexp="[a-zA-Z0-9 ]*",message = "*Niepoprawny numer domu")
+    @Pattern(regexp="[a-zA-Z0-9 ]+[/ a-zA-Z0-9]*",message = "*Niepoprawny numer domu")
     private String street_local_number;
+
+    public Client() {
+    }
 
     public int getId() {
 
@@ -89,9 +92,7 @@ public class Client {
         return phone_number;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
-    }
+    public void setPhone_number(String phone_number) { this.phone_number = phone_number; }
 
     public String getPostcode() {
         return postcode;
